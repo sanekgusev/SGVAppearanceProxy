@@ -1,0 +1,293 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EC5A18B519213A1500519E01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5A18B419213A1500519E01 /* Foundation.framework */; };
+		ECB23D4819213A63000EAB6B /* SGVAppearanceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB23D4719213A63000EAB6B /* SGVAppearanceProxy.m */; };
+		ECB23D4B19214986000EAB6B /* UIView+SGVAppearanceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB23D4A19214986000EAB6B /* UIView+SGVAppearanceProxy.m */; };
+		ECB23D4D19214BC1000EAB6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB23D4C19214BC1000EAB6B /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EC5A18AF19213A1500519E01 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		EC5A18B119213A1500519E01 /* libSGVAppearanceProxy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSGVAppearanceProxy.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC5A18B419213A1500519E01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		ECB23D4619213A63000EAB6B /* SGVAppearanceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGVAppearanceProxy.h; sourceTree = "<group>"; };
+		ECB23D4719213A63000EAB6B /* SGVAppearanceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGVAppearanceProxy.m; sourceTree = "<group>"; };
+		ECB23D4919214986000EAB6B /* UIView+SGVAppearanceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SGVAppearanceProxy.h"; sourceTree = "<group>"; };
+		ECB23D4A19214986000EAB6B /* UIView+SGVAppearanceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SGVAppearanceProxy.m"; sourceTree = "<group>"; };
+		ECB23D4C19214BC1000EAB6B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EC5A18AE19213A1500519E01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECB23D4D19214BC1000EAB6B /* UIKit.framework in Frameworks */,
+				EC5A18B519213A1500519E01 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EC5A18A819213A1500519E01 = {
+			isa = PBXGroup;
+			children = (
+				EC5A18B619213A1500519E01 /* SGVAppearanceProxy */,
+				EC5A18B319213A1500519E01 /* Frameworks */,
+				EC5A18B219213A1500519E01 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EC5A18B219213A1500519E01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EC5A18B119213A1500519E01 /* libSGVAppearanceProxy.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EC5A18B319213A1500519E01 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ECB23D4C19214BC1000EAB6B /* UIKit.framework */,
+				EC5A18B419213A1500519E01 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EC5A18B619213A1500519E01 /* SGVAppearanceProxy */ = {
+			isa = PBXGroup;
+			children = (
+				ECB23D4519213A63000EAB6B /* src */,
+				EC5A18B719213A1500519E01 /* Supporting Files */,
+			);
+			path = SGVAppearanceProxy;
+			sourceTree = "<group>";
+		};
+		EC5A18B719213A1500519E01 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ECB23D4519213A63000EAB6B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				ECB23D4619213A63000EAB6B /* SGVAppearanceProxy.h */,
+				ECB23D4719213A63000EAB6B /* SGVAppearanceProxy.m */,
+				ECB23D4919214986000EAB6B /* UIView+SGVAppearanceProxy.h */,
+				ECB23D4A19214986000EAB6B /* UIView+SGVAppearanceProxy.m */,
+			);
+			path = src;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EC5A18B019213A1500519E01 /* SGVAppearanceProxy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC5A18D419213A1500519E01 /* Build configuration list for PBXNativeTarget "SGVAppearanceProxy" */;
+			buildPhases = (
+				EC5A18AD19213A1500519E01 /* Sources */,
+				EC5A18AE19213A1500519E01 /* Frameworks */,
+				EC5A18AF19213A1500519E01 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SGVAppearanceProxy;
+			productName = SGVAppearanceProxy;
+			productReference = EC5A18B119213A1500519E01 /* libSGVAppearanceProxy.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EC5A18A919213A1500519E01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = sanekgusev;
+			};
+			buildConfigurationList = EC5A18AC19213A1500519E01 /* Build configuration list for PBXProject "SGVAppearanceProxy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EC5A18A819213A1500519E01;
+			productRefGroup = EC5A18B219213A1500519E01 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EC5A18B019213A1500519E01 /* SGVAppearanceProxy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EC5A18AD19213A1500519E01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECB23D4B19214986000EAB6B /* UIView+SGVAppearanceProxy.m in Sources */,
+				ECB23D4819213A63000EAB6B /* SGVAppearanceProxy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		EC5A18D219213A1500519E01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EC5A18D319213A1500519E01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EC5A18D519213A1500519E01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SGVAppearanceProxy.dst;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		EC5A18D619213A1500519E01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SGVAppearanceProxy.dst;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EC5A18AC19213A1500519E01 /* Build configuration list for PBXProject "SGVAppearanceProxy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC5A18D219213A1500519E01 /* Debug */,
+				EC5A18D319213A1500519E01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC5A18D419213A1500519E01 /* Build configuration list for PBXNativeTarget "SGVAppearanceProxy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC5A18D519213A1500519E01 /* Debug */,
+				EC5A18D619213A1500519E01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EC5A18A919213A1500519E01 /* Project object */;
+}
