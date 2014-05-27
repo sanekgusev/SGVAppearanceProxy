@@ -10,7 +10,7 @@
 #import <objc/runtime.h>
 
 static const void *kAlreadyInvokedKey = &kAlreadyInvokedKey;
-static char CustomSetterTypeEncoding[32];
+static char *CustomSetterTypeEncoding;
 
 @interface SGVAppearanceProxy() {
     id _originalProxy;
@@ -116,8 +116,14 @@ static void SGVAppearanceProxyCustomSetterIMP(id self,
 static void SGVGenerateTypeEncodingString() {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        snprintf(CustomSetterTypeEncoding, sizeof(CustomSetterTypeEncoding),
-                 "%s%s%s%s", @encode(void), @encode(id), @encode(SEL), @encode(id));
+        NSString *customSetterTypeEncodingString = [[NSString alloc] initWithFormat:@"%s%s%s%s",
+                                                    @encode(void), @encode(id), @encode(SEL), @encode(id)];
+        const char *UTF8String = [customSetterTypeEncodingString UTF8String];
+        size_t length = strlen(UTF8String);
+        CustomSetterTypeEncoding = malloc(length + 1);
+        CustomSetterTypeEncoding = strncpy(CustomSetterTypeEncoding,
+                                           UTF8String,
+                                           length + 1);
     });
 }
 

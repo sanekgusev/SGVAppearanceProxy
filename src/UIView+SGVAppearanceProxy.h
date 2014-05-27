@@ -11,6 +11,7 @@
 @interface UIView (SGVAppearanceProxy)
 
 + (instancetype)sgv_appearance;
++ (instancetype)sgv_appearanceWhenContainedIn:(__unsafe_unretained Class<UIAppearanceContainer>)class;
 + (instancetype)sgv_appearanceAppliedOnlyOnce;
 
 @end
