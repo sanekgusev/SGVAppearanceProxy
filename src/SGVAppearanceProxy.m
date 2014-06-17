@@ -44,9 +44,11 @@ static char *CustomSetterTypeEncoding;
 - (void)forwardInvocation:(NSInvocation *)invocation {
     SEL uniqueSelector = SGVGeneratedUniqueSelectorForCustomSetter();
     if ([self addCustomSetterMethodToClass:_class withSelector:uniqueSelector]) {
-        [invocation retainArguments];
-        [SGVCustomSetterInvocationForInvocationAndUniqueSelector(invocation, uniqueSelector)
-         invokeWithTarget:_originalProxy];
+        SGVRetainInvocationArgumentsIfNeeded(invocation);
+#       pragma clang diagnostic push
+#       pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [_originalProxy performSelector:uniqueSelector withObject:invocation];
+#       pragma clang diagnostic pop
     }
     else {
         NSCAssert(NO, @"new method should be added successfully");
@@ -84,8 +86,7 @@ static void SGVAppearanceProxyCustomSetterOnlyOnceIMP(id self,
     if ([alreadyInvokedInvocations containsObject:originalInvocation]) {
         return;
     }
-    [originalInvocation invokeWithTarget:self];
-    originalInvocation.target = nil;
+    [SGVCopyInvocationIfNeeded(originalInvocation) invokeWithTarget:self];
     if (!alreadyInvokedInvocations) {
         alreadyInvokedInvocations = [NSMutableSet new];
     }
@@ -99,8 +100,7 @@ static void SGVAppearanceProxyCustomSetterOnlyOnceIMP(id self,
 static void SGVAppearanceProxyCustomSetterIMP(id self,
                                               SEL _cmd,
                                               NSInvocation *originalInvocation) {
-    [originalInvocation invokeWithTarget:self];
-    originalInvocation.target = nil;
+    [SGVCopyInvocationIfNeeded(originalInvocation) invokeWithTarget:self];
 }
 
 #pragma mark - Private
@@ -111,6 +111,48 @@ static void SGVAppearanceProxyCustomSetterIMP(id self,
                            (IMP)(_appliesAppearanceOnce ? SGVAppearanceProxyCustomSetterOnlyOnceIMP :
                                  SGVAppearanceProxyCustomSetterIMP),
                            CustomSetterTypeEncoding);
+}
+
+static NSInvocation *SGVCopyInvocation(NSInvocation *invocation) {
+    NSMethodSignature *methodSignature = [invocation methodSignature];
+    NSInvocation *copiedInvocation = [NSInvocation invocationWithMethodSignature:methodSignature];
+    [copiedInvocation setTarget:[invocation target]];
+    [copiedInvocation setSelector:[invocation selector]];
+
+    for (NSUInteger i = 2; i < [methodSignature numberOfArguments]; i++) {
+        const char *objcType = [methodSignature getArgumentTypeAtIndex:i];
+        NSUInteger argumentSize;
+        NSGetSizeAndAlignment(objcType, &argumentSize, NULL);
+        uint8_t argumentData[argumentSize];
+        [invocation getArgument:argumentData atIndex:i];
+        [copiedInvocation setArgument:argumentData atIndex:i];
+    }
+
+    return copiedInvocation;
+}
+
+static NSInvocation *SGVCopyInvocationIfNeeded(NSInvocation *invocation) {
+    if ([invocation argumentsRetained]) {
+        invocation = SGVCopyInvocation(invocation);
+    }
+    return invocation;
+}
+
+static BOOL SGVInvocationContainsObjectArguments(NSInvocation *invocation) {
+    NSMethodSignature *methodSignature = [invocation methodSignature];
+    for (NSUInteger i = 2; i < [methodSignature numberOfArguments]; i++) {
+        const char *objcType = [methodSignature getArgumentTypeAtIndex:i];
+        if (strcmp(objcType, @encode(id)) == 0) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+static void SGVRetainInvocationArgumentsIfNeeded(NSInvocation *invocation) {
+    if (SGVInvocationContainsObjectArguments(invocation)) {
+        [invocation retainArguments];
+    }
 }
 
 static void SGVGenerateTypeEncodingString() {
@@ -133,23 +175,6 @@ static SEL SGVGeneratedUniqueSelectorForCustomSetter() {
              "set%s:",
              [[[NSUUID UUID] UUIDString] UTF8String]);
     return sel_registerName(selectorStr);
-}
-
-static NSInvocation *SGVCustomSetterInvocationForInvocationAndUniqueSelector(NSInvocation *invocation,
-                                                                             SEL selector) {
-    static NSMethodSignature *MethodSignature = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        MethodSignature = [NSMethodSignature signatureWithObjCTypes:CustomSetterTypeEncoding];
-        NSCAssert([MethodSignature numberOfArguments] == 3, @"number of arguments should be 3");
-    });
-    NSInvocation *customSetterInvocation = [NSInvocation invocationWithMethodSignature:MethodSignature];
-    [customSetterInvocation setSelector:selector];
-
-    [customSetterInvocation setArgument:&invocation atIndex:2];
-    [customSetterInvocation retainArguments];
-
-    return customSetterInvocation;
 }
 
 @end
