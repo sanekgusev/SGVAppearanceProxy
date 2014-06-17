@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SGVAppearanceProxy"
-  s.version      = "1.0.0"
+  s.version      = "1.1.0"
   s.summary      = "An UIAppearance proxy wrapper to work around performance issues on iOS7."
 
   s.description  = <<-DESC
