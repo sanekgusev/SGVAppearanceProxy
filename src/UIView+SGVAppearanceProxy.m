@@ -30,7 +30,16 @@
 #pragma mark - Private
 
 + (instancetype)sgv_proxiedAppearanceIfNeededForAppearance:(id)appearance {
-    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
+
+#ifndef kCFCoreFoundationVersionNumber_iOS_7_0
+    #define kCFCoreFoundationVersionNumber_iOS_7_0 847.18
+#endif
+#ifndef kCFCoreFoundationVersionNumber_iOS_7_1
+    #define kCFCoreFoundationVersionNumber_iOS_7_1 847.24
+#endif
+    
+    if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_7_0 &&
+        kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iOS_7_1) {
         return (UIView *)[[SGVAppearanceProxy alloc] initWithOriginalProxy:appearance
                                                                   forClass:self
                                                        applyAppearanceOnce:NO];
